@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'StaticController@index')->name('home');
+Route::get('/tour', 'StaticController@tourPage')->name('tour');
