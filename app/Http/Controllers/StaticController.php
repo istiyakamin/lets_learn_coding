@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
-use App\User;
 
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class StaticController extends Controller
@@ -54,7 +55,13 @@ class StaticController extends Controller
         }
 
 
+    }
+
+    public function showAllData(){
+
+        $all_users = DB::table('users')->select()->get();
 
 
+        return view('profiles', compact('all_users'));
     }
 }
