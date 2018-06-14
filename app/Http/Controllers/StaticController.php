@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\User;
+
+
 
 class StaticController extends Controller
 {
@@ -31,15 +34,24 @@ class StaticController extends Controller
             'profile_photo' => 'required|image|max:10240'
         ]);
 
+
+
         $profile_photo = $request->file('profile_photo');
         $path = $profile_photo->store('profile_photo');
 
 
+        $db = User::create([
+            'email'=> trim($request->input('email')),
+            'username'=> trim($request->input('username')),
+            'password'=> bcrypt($request->input('password')),
+            'profile_photo'=>$path,
 
+        ]);
 
-
-        return $validator;
-
+        if($db){
+            session()->flash('message', 'You have successfully submitted you data');
+            return redirect()->back();
+        }
 
 
 

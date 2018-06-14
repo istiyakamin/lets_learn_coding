@@ -5,7 +5,14 @@
 @section('content')
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
-            <form action="/reg" method="post" enctype="multipart/form-data">
+
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
+
+            <form action="{{ route('reg') }}" method="post" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
@@ -36,10 +43,10 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Example file input</label>
-                    <input type="file" name="pphoto" class="form-control-file" id="exampleFormControlFile1">
-                    @if($errors->has('pphoto'))
+                    <input type="file" name="profile_photo" class="form-control-file" id="exampleFormControlFile1">
+                    @if($errors->has('profile_photo'))
                         <div class="alert alert-warning" role="alert">
-                            {{$errors->first('pphoto')}}
+                            {{$errors->first('profile_photo')}}
                         </div>
                     @endif
                 </div>
