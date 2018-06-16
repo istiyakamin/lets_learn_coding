@@ -59,9 +59,13 @@ class StaticController extends Controller
 
     public function showAllData(){
 
-        $all_users = DB::table('users')->select()->get();
+        $all_users = User::all();
 
 
         return view('profiles', compact('all_users'));
+    }
+
+    public function login(){
+        return view('login');
     }
 }
