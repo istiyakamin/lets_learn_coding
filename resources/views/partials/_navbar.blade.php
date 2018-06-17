@@ -5,7 +5,7 @@
         </a>
         <a class="py-2 d-none d-md-inline-block" href="{{ route('tour') }}">Tour</a>
         <a class="py-2 d-none d-md-inline-block" href="{{route('profiles')}}">Profiles</a>
-        <a class="py-2 d-none d-md-inline-block" href="{{route('login')}}">Login</a>
+        <a class="py-2 d-none d-md-inline-block" href="{{route('loginform')}}">Login</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>

@@ -15,4 +15,6 @@ Route::get('/', 'StaticController@index')->name('home');
 Route::get('/tour', 'StaticController@tourPage')->name('tour');
 Route::post('/reg', 'StaticController@registration')->name('reg');
 Route::get('/profiles', 'StaticController@showAllData')->name('profiles');
-Route::get('/login', 'StaticController@login')->name('login');
+Route::get('/loginform', 'StaticController@loginForm')->name('loginform');
+
+Route::post('/login', 'Auth\AuthController@login')->name('login');

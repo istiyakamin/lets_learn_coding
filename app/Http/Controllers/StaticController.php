@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
-
-use App\User;
+use App\Model\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 
 class StaticController extends Controller
@@ -65,7 +62,7 @@ class StaticController extends Controller
         return view('profiles', compact('all_users'));
     }
 
-    public function login(){
-        return view('login');
+    public function loginForm(){
+        return view('loginform');
     }
 }

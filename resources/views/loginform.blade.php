@@ -29,13 +29,7 @@
         8. Custom Checkbox & Radio
         9. Misc
         -------------------------------------------------------------------*/
-        /*=== 1. General Structure ===*/
-        html,
-        body {
-        background: #efefef;
-        padding: 10px;
-        font-family: 'Varela Round';
-        }
+
         /*=== 2. Anchor Link ===*/
         a {
         color: #aaaaaa;
@@ -306,17 +300,28 @@
         <div class="logo">login</div>
         <!-- Main Form -->
         <div class="login-form-1">
-            <form id="login-form" action="/" method="post" class="text-left">
+            <form id="login-form" action="/login" method="post" class="text-left">
+                {{ csrf_field() }}
                 <div class="login-form-main-message"></div>
                 <div class="main-login-form">
                     <div class="login-group">
                         <div class="form-group">
                             <label for="lg_username" class="sr-only">Email</label>
-                            <input type="Email" class="form-control" id="lg_username" name="lg_username" placeholder="email">
+                            <input type="Email" class="form-control" id="lg_username" name="email" value="{{ old('email') }}" placeholder="email">
+                            @if($errors->has('email'))
+                                <div class="alert alert-warning" role="alert">
+                                    {{$errors->first('email')}}
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="lg_password" class="sr-only">Password</label>
-                            <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password">
+                            <input type="password" class="form-control" id="lg_password" name="password" value="{{ old('password') }}" placeholder="password">
+                            @if($errors->has('password'))
+                                <div class="alert alert-warning" role="alert">
+                                    {{$errors->first('password')}}
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group login-group-checkbox">
                             <input type="checkbox" id="lg_remember" name="lg_remember">
