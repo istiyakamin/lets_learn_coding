@@ -31,11 +31,13 @@ class AuthController extends Controller
             // redirect them to the secure section or whatever
             // return Redirect::to('secure');
             // for now we'll just echo success (even though echoing in a controller is bad)
-            echo 'SUCCESS!';
+            session()->flash('message', 'You Have beeb successfully loged in');
+            return Redirect::to('dashboard');
 
         } else {
 
             // validation not successful, send back to form
+            session()->flash('message', 'Something went to wrong');
             return Redirect::to('loginform');
 
         }

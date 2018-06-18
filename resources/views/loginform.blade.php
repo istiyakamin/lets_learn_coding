@@ -330,6 +330,13 @@
                     </div>
                     <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
                 </div>
+
+                @if (session()->has('message'))
+                    <div class="alert alert-danger">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
                 <div class="etc-login-form">
                     <p>forgot your password? <a href="#">click here</a></p>
                     <p>new user? <a href="#">create new account</a></p>

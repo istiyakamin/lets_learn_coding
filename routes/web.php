@@ -18,3 +18,4 @@ Route::get('/profiles', 'StaticController@showAllData')->name('profiles');
 Route::get('/loginform', 'StaticController@loginForm')->name('loginform');
 
 Route::post('/login', 'Auth\AuthController@login')->name('login');
+Route::get('/dashboard', 'DashboardController@showDashboard')->name('dashboard');
