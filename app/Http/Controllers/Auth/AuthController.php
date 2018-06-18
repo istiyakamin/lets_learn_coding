@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -24,17 +25,20 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        if (Auth::attempt($inputs)) {
 
+            // validation successful!
+            // redirect them to the secure section or whatever
+            // return Redirect::to('secure');
+            // for now we'll just echo success (even though echoing in a controller is bad)
+            echo 'SUCCESS!';
 
-        //var_dump(Auth::attempt($inputs));
+        } else {
 
+            // validation not successful, send back to form
+            return Redirect::to('loginform');
 
+        }
 
-
-
-        // Check if user is exsists
-
-
-        // Login to the user homepage
     }
 }
