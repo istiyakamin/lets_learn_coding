@@ -28,11 +28,13 @@
             </tr>
             <tr>
                 <td>Password</td>
-                <td>{{  }}</td>
+                <td>{{$users->password}}</td>
             </tr>
 
         </table>
     </div>
+
+    <button class="btn btn-info"><a href="{{ route('logout') }}">LogOut</a></button>
 
 
 @endsection
