@@ -18,5 +18,9 @@ Route::get('/profiles', 'StaticController@showAllData')->name('profiles');
 Route::get('/loginform', 'StaticController@loginForm')->name('loginform');
 
 Route::post('/login', 'Auth\AuthController@login')->name('login');
-Route::get('/dashboard', 'DashboardController@showDashboard')->name('dashboard');
-Route::get('/logout', 'Auth\AuthController@logOut')->name('logout');
+
+Route::middleware(['test'])->group(function () {
+    Route::get('/dashboard', 'DashboardController@showDashboard')->name('dashboard');
+    Route::get('/logout', 'Auth\AuthController@logOut')->name('logout');
+});
+
