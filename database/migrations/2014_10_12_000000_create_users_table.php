@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('username', 32);
             $table->string('password', 128);
             $table->string('profile_photo', 128);
+            $table->boolean('is_active');
+            $table->string('verify_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

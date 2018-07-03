@@ -2,8 +2,9 @@
 
 namespace App\Model;
 
-use Illuminate\Notifications\Notifiable;
+use App\Events\UserCreatedEvnet;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,6 +17,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username', 'email', 'password', 'profile_photo'
+    ];
+
+
+    protected $dispatchesEvents = [
+        'created' => UserCreatedEvnet::class,
     ];
 
     /**
