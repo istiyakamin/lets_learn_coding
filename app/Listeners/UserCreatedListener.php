@@ -25,6 +25,6 @@ class UserCreatedListener
      */
     public function handle($event)
     {
-        //
+        
     }
 }

@@ -43,6 +43,8 @@ class StaticController extends Controller
             'username'=> trim($request->input('username')),
             'password'=> bcrypt($request->input('password')),
             'profile_photo'=>$path,
+            'is_active' => false,
+            'verify_token' => md5($request->input('email') . uniqid('laravel', true))
 
         ]);
 
