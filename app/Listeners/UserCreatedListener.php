@@ -14,7 +14,7 @@ class UserCreatedListener
      */
     public function __construct()
     {
-        //
+        
     }
 
     /**

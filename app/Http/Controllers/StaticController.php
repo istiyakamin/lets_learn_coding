@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailJob;
+use App\Mail\SendVerification;
 use App\Model\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 
 class StaticController extends Controller
@@ -43,12 +46,15 @@ class StaticController extends Controller
             'username'=> trim($request->input('username')),
             'password'=> bcrypt($request->input('password')),
             'profile_photo'=>$path,
-            'is_active' => false,
+            'is_active' => 0,
             'verify_token' => md5($request->input('email') . uniqid('laravel', true))
 
         ]);
 
-        if($db){
+    
+
+        if ($db) {
+            SendEmailJob::dispatch();
             session()->flash('message', 'You have successfully submitted you data');
             return redirect()->back();
         }

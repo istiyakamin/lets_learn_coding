@@ -13,6 +13,7 @@ use Illuminate\Queue\SerializesModels;
 
 class UserCreatedEvnet
 {
+    public $user;
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
