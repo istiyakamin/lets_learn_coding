@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SendEmailJob;
 use App\Mail\SendVerification;
 use App\Model\User;
 use Illuminate\Http\Request;
@@ -41,7 +40,9 @@ class StaticController extends Controller
         $path = $profile_photo->store('profile_photo');
 
 
-        $db = User::create([
+
+
+        $user = User::create([
             'email'=> trim($request->input('email')),
             'username'=> trim($request->input('username')),
             'password'=> bcrypt($request->input('password')),
@@ -51,13 +52,14 @@ class StaticController extends Controller
 
         ]);
 
-    
 
-        if ($db) {
-            SendEmailJob::dispatch();
+       
+            $thisUser = User::findOrFail($user->id);
+            Mail::to($request->input('email'))->send(new SendVerification($thisUser));
             session()->flash('message', 'You have successfully submitted you data');
-            return redirect()->back();
-        }
+            return redirect('/');
+
+    
 
 
     }
